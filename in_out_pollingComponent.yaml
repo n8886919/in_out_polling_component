@@ -1,0 +1,62 @@
+substitutions:
+  devicename: in_out_polling_component
+  upper_devicename: Livingroom
+
+esphome:
+  name: $devicename
+  platform: ESP8266
+  board: d1_mini
+  includes:
+    # - tof_vl53l1x.h
+    - vl53l1x_PollingComponent1.h
+    - vl53l1x_PollingComponent2.h
+  libraries:
+    - "VL53L1x"
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  password: ""
+
+wifi:
+  ssid: "nolan"
+  password: "0973063057"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: $devicename
+    password: "0973063057"
+
+captive_portal:
+i2c:  # example for Wemos LOLIN D2 mini
+  # VL53L1X, 0x29
+  frequency: 400kHz
+
+sensor:
+- platform: custom
+  lambda: |-
+    auto my_sensor1 = new MyCustomSensor1();
+    App.register_component(my_sensor1);
+    return {my_sensor1};
+
+  sensors:
+    name: $devicename distance1
+    accuracy_decimals: 0
+    unit_of_measurement: "mm"
+
+- platform: custom
+  # D4 -> XSHUT
+  lambda: |-
+    auto my_sensor2 = new MyCustomSensor2();
+    App.register_component(my_sensor2);
+    return {my_sensor2};
+
+  sensors:
+    name: $devicename distance2
+    accuracy_decimals: 0
+    unit_of_measurement: "mm"
+
