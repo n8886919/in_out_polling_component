@@ -8,7 +8,7 @@ VL53L1X tof_sensor1;
 class MyCustomSensor1 : public PollingComponent, public Sensor {
  public:
   // constructor
-  MyCustomSensor1() : PollingComponent(500) {} // polling every 15s
+  MyCustomSensor1() : PollingComponent(500) {} // polling every 0.5s
 
   void setup() override {
     // This will be called by App.setup()
