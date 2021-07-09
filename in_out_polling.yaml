@@ -1,5 +1,5 @@
 substitutions:
-  devicename: in_out_polling_component
+  devicename: in_out_polling
   upper_devicename: Livingroom
 
 esphome:
@@ -11,7 +11,7 @@ esphome:
     - vl53l1x_PollingComponent1.h
     - vl53l1x_PollingComponent2.h
   libraries:
-    - "VL53L1x"
+    - "pololu/VL53L1X @ 1.3.0"
 # Enable logging
 logger:
 

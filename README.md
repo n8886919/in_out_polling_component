@@ -12,6 +12,8 @@ esphome run in_out_polling.yaml
   >This class simplifies creating components that periodically check a state.
    You basically just need to implement the update() function, it will be called every update_interval ms after startup.
    Note that this class cannot guarantee a correct timing, as it's not using timers, just a software polling feature with set_interval() from Component.
++ 接上vl53l1的XSHUT腳位才能成功[init()](vl53l1x_PollingComponent1.h#L18)??\
+  XSHUT對應的GPIO不須設定 & 即使沒設定vl53l1也會成功初始化但[init()](vl53l1x_PollingComponent1.h#L18)會卡住
 + esphome 會依序跑完兩個[sensor](in_out_pollingComponent.yaml#L39)的setup\
   因為兩個vl53l1x共用同個i2c, vl53l1x_PollingComponent1.h的[setup()](vl53l1x_PollingComponent1.h#L13)會將兩個vl53l1x硬體(S1 & S2)的address都設成42 a.k.a. 0x2a, 也設定esphome從0x2a讀取S1的資料\
   vl53l1x_PollingComponent2.h的[setup()](vl53l1x_PollingComponent2.h#L13)透過D4(GPIO2)控制S2的XSHUT重啟S2
