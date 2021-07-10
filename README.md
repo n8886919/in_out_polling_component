@@ -1,6 +1,6 @@
 # Human in_out detector Esphome + vl53l1x
-Upload two [vl53l1x](https://www.st.com/en/imaging-and-photonics-solutions/vl53l1x.html) TOF(Time of Flight) sensor data to [home assistant](https://www.home-assistant.io/) every 500ms
-
+1. [in_out_polling.yaml](in_out_polling.yaml): publish two [vl53l1x](https://www.st.com/en/imaging-and-photonics-solutions/vl53l1x.html) TOF(Time of Flight) sensor data to [home assistant](https://www.home-assistant.io/) every 500ms
+2. [in_out.yaml](in_out_polling) publish while the measured data of each sensor change
 ![接線圖](wire.PNG)\
 ## Upload
 ```
