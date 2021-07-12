@@ -9,7 +9,8 @@ esphome:
   includes:
     - vl53l1x_Component.h
   libraries:
-    - "VL53L1x"
+    - "pololu/VL53L1X @ 1.3.0"
+    - "robtillaart/StopWatch @ 0.3.1"
 # Enable logging
 logger: 
   level: info
@@ -40,7 +41,7 @@ sensor:
   lambda: |-
     auto my_sensor = new MyCustomSensor();
     App.register_component(my_sensor);
-    return {my_sensor->tof_1, my_sensor->tof_2};
+    return {my_sensor->tof_1, my_sensor->tof_2, my_sensor->timer_1, my_sensor->timer_2};
 
   sensors:
   - name: ${devicename}_distance1
@@ -51,3 +52,10 @@ sensor:
     accuracy_decimals: 0
     unit_of_measurement: "mm"
 
+  - name: ${devicename}_timer1
+    accuracy_decimals: 0
+    unit_of_measurement: "ms"
+
+  - name: ${devicename}_timer2
+    accuracy_decimals: 0
+    unit_of_measurement: "ms"
